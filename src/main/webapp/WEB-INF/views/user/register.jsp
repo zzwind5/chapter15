@@ -3,7 +3,7 @@
 <html>
 	<head><title>New Users</title></head>
 	<body>
-		<form method="post" action="<c:url value='/user.html'/>">
+		<form method="post" action="<c:url value='/user/handle41.html'/>">
 			<table>
 				<tr>
 					<td>User Name:</td>
