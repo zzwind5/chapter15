@@ -1,12 +1,17 @@
 package com.baobaotao.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -68,5 +73,22 @@ public class UserController {
 		Resource res = new FileSystemResource(filePath);
 		byte[] imageData = FileCopyUtils.copyToByteArray(res.getInputStream());
 		return imageData;
+	}
+	
+	@RequestMapping(value="/handle43")
+	public String handle43(HttpEntity<String> httpEntity) {
+		List<MediaType> types = httpEntity.getHeaders().getAccept();
+		for (MediaType type : types) {
+			System.out.println(type.getType());
+		}
+		return "user/success";
+	}
+	
+	@RequestMapping("/handle44/{imageName}")
+	public ResponseEntity<byte[]> handle44(@PathVariable String imageName) throws IOException {
+		String imagePath = "F:\\Photo\\2013-1-3\\" + imageName + ".jpg";
+		Resource res = new FileSystemResource(imagePath);
+		byte[] resArgs = FileCopyUtils.copyToByteArray(res.getInputStream());
+		return new ResponseEntity<byte[]> (resArgs, HttpStatus.OK);
 	}
 }
