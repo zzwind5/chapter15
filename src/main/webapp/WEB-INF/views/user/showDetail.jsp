@@ -4,6 +4,8 @@
 <title>展示用户</title>
 </head>
 <body>
-用户的ID 是：${userId}
+userName: ${user.userName}		password:${user.password}		realName:${user.realName}
+testKey: ${testKey}
+userName: ${userName}
 </body>
 </html>

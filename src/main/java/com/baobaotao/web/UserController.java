@@ -13,8 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -99,5 +101,33 @@ public class UserController {
 		user.setRealName("xxxxxxxxxxxxxxxxxxxx");
 		System.out.println(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@RequestMapping("/handle61")
+	public String handle61(@ModelAttribute("user") User user) {
+		user.setRealName("Hello");
+		return "user/success";
+	}
+	
+//	@ModelAttribute("user")
+//	public User getUser() {
+//		User user = new User();
+//		user.setUserName("zuozou");
+//		
+//		return user;
+//	}
+	
+	@RequestMapping("/handle62")
+	public String handle62(User user){
+		System.out.println(user);
+		return "user/showDetail";
+	}
+	
+	@RequestMapping(value="/handle63")
+	public String handle63(Model map) {
+		System.out.println(map);
+//		map.put("testKey", "#####Test");
+//		((User)map.get("user")).setPassword("***************");
+		return "user/showDetail";
 	}
 }

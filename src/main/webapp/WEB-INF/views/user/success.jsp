@@ -5,5 +5,6 @@
 </head>
 <body>
 Response Body: ${body}
+Response User: userName = ${user.userName}    password = ${user.password}    realName = ${user.realName}
 </body>
 </html>
