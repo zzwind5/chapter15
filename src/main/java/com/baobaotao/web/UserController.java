@@ -91,4 +91,13 @@ public class UserController {
 		byte[] resArgs = FileCopyUtils.copyToByteArray(res.getInputStream());
 		return new ResponseEntity<byte[]> (resArgs, HttpStatus.OK);
 	}
+	
+	@RequestMapping("/handle51")
+	public ResponseEntity<User> handle51(HttpEntity<User> requestEntity) {
+		User user = requestEntity.getBody();
+		user.setUserName("ZhangJie");
+		user.setRealName("xxxxxxxxxxxxxxxxxxxx");
+		System.out.println(user);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 }
